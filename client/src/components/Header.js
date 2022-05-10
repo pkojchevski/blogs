@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   renderContent() {
+    console.log(this.props.auth);
     switch (this.props.auth) {
       case null:
         return;
@@ -15,28 +16,28 @@ class Header extends Component {
         );
       default:
         return [
-          <li key="3" style={{ margin: '0 10px' }}>
-            <Link to="/blogs">My Blogs</Link>
+          <li key='3' style={{ margin: '0 10px' }}>
+            <Link to='/blogs'>My Blogs</Link>
           </li>,
-          <li key="2">
+          <li key='2'>
             <a href={'/auth/logout'}>Logout</a>
-          </li>
+          </li>,
         ];
     }
   }
 
   render() {
     return (
-      <nav className="indigo">
-        <div className="nav-wrapper">
+      <nav className='indigo'>
+        <div className='nav-wrapper'>
           <Link
             to={this.props.auth ? '/blogs' : '/'}
-            className="left brand-logo"
+            className='left brand-logo'
             style={{ marginLeft: '10px' }}
           >
             Blogster
           </Link>
-          <ul className="right">{this.renderContent()}</ul>
+          <ul className='right'>{this.renderContent()}</ul>
         </div>
       </nav>
     );
